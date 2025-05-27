@@ -3,54 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Calculadora Científica</title>
+  <title>Catálogo de Inmuebles</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="calculator">
-    <input type="text" id="display" disabled />
-    <div class="buttons">
-      <!-- Fila 1 -->
-      <button onclick="clearDisplay()">C</button>
-      <button onclick="deleteLast()">⌫</button>
-      <button onclick="appendValue('(')">(</button>
-      <button onclick="appendValue(')')">)</button>
+  <div class="container">
+    <h1>Catálogo de Inmuebles</h1>
 
-      <!-- Fila 2 -->
-      <button onclick="appendValue('sin(')">sin</button>
-      <button onclick="appendValue('cos(')">cos</button>
-      <button onclick="appendValue('tan(')">tan</button>
-      <button onclick="appendValue('^')">^</button>
+    <form id="property-form">
+      <input type="text" id="title" placeholder="Título del inmueble" required />
+      <input type="text" id="address" placeholder="Dirección" required />
+      <input type="number" id="price" placeholder="Precio ($)" required />
+      <input type="url" id="image" placeholder="URL de imagen" required />
+      <textarea id="description" placeholder="Descripción del inmueble" required></textarea>
+      <button type="submit">Guardar inmueble</button>
+    </form>
 
-      <!-- Fila 3 -->
-      <button onclick="appendValue('7')">7</button>
-      <button onclick="appendValue('8')">8</button>
-      <button onclick="appendValue('9')">9</button>
-      <button onclick="appendValue('/')">÷</button>
+    <hr />
 
-      <!-- Fila 4 -->
-      <button onclick="appendValue('4')">4</button>
-      <button onclick="appendValue('5')">5</button>
-      <button onclick="appendValue('6')">6</button>
-      <button onclick="appendValue('*')">×</button>
-
-      <!-- Fila 5 -->
-      <button onclick="appendValue('1')">1</button>
-      <button onclick="appendValue('2')">2</button>
-      <button onclick="appendValue('3')">3</button>
-      <button onclick="appendValue('-')">-</button>
-
-      <!-- Fila 6 -->
-      <button onclick="appendValue('0')">0</button>
-      <button onclick="appendValue('.')">.</button>
-      <button onclick="appendValue('Math.log10(')">log</button>
-      <button onclick="appendValue('+')">+</button>
-
-      <!-- Fila 7 -->
-      <button onclick="appendValue('Math.sqrt(')">√</button>
-      <button onclick="appendValue('Math.exp(')">exp</button>
-      <button onclick="calculateResult()" class="equal">=</button>
+    <div class="filters">
+      <input type="text" id="filter-address" placeholder="Filtrar por dirección" />
+      <input type="number" id="filter-min-price" placeholder="Precio mínimo" />
+      <input type="number" id="filter-max-price" placeholder="Precio máximo" />
+      <button onclick="applyFilters()">Aplicar filtros</button>
+      <button onclick="clearFilters()">Limpiar filtros</button>
     </div>
+
+    <h2>Listado de Inmuebles</h2>
+    <div id="property-list" class="property-grid"></div>
   </div>
 
   <script src="script.js"></script>
